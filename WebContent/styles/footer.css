@@ -1,0 +1,29 @@
+@charset "ISO-8859-1";
+.copyright{
+    position: fixed;
+    left:0;
+    bottom:0;
+    width: 100%;
+    height: 90px;
+    color:rgb(217, 217, 226);
+    background-color: rgb(39, 48, 59);
+    padding-top:10px;
+    
+}
+.copyright p{
+    background-color:rgb(39, 48, 59);
+    text-align: center;
+    font-size: 10pt;
+}
+.copyright img{
+    
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 2.5%;
+    margin-top:0;
+    margin-bottom: 0;
+}
+.copyright h1{
+    margin-left: 40%;
+}
