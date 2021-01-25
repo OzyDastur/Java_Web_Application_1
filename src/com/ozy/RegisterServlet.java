@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.tomcat.util.codec.binary.Base64;
+
+
 /**
  * Servlet implementation class RegisterServlet
  */
@@ -27,6 +30,15 @@ public class RegisterServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
+	
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		try {
 			
 			//Recieving request from client/user
@@ -36,23 +48,55 @@ public class RegisterServlet extends HttpServlet {
 			String password = request.getParameter("password");
 			String confirm_password = request.getParameter("confirm_password");
 			
+			String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+		    
 			
 			
+		
+			if(username.isEmpty() || email.isEmpty() || password.isEmpty() || confirm_password.isEmpty()) {
+				response.sendRedirect("signup.jsp?emptyFields=Please complete all the fields");
+			}
+			else if(!email.matches(regex)){
+				response.sendRedirect("signup.jsp?invalidEmail=Invalid email");
+			}
+			else if(!password.equals(confirm_password)) {
+				
+				response.sendRedirect("signup.jsp?passwordMismatch=The two passwords do not match");
+			}
+			else if(!password.matches("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")) {
+				response.sendRedirect("signup.jsp?invalidPassword=Password must be at least 8 characters one uppercase one lowercase one number one special character");
+			}
+		
+		
+			else {
+				
+				//Encode password 
+				byte[] encodePw = Base64.encodeBase64(password.getBytes());
+				String pwEncode = new String(encodePw);
+				
+				//Encode confirm password
+				byte[] encodeCpw = Base64.encodeBase64(password.getBytes());
+				String pwConfirmEncode = new String(encodeCpw);
+				
+		
+				//Create an object of the User class
+				User user = new User ();
+				
+				user.setUsername(username);
+				user.setEmail(email);
+				user.setGender(gender);
+				user.setPassword(pwEncode);
+				user.setConfirm_password(pwConfirmEncode);
+				
 			
-			//Create an object of the User class
-			User user = new User ();
+				
+				//Call database class and pass user data
+				DatabaseConnection.registerUser(user);
+				//redirect
+				response.sendRedirect("login.jsp");
+		
+			}
 			
-			user.setUsername(username);
-			user.setEmail(email);
-			user.setGender(gender);
-			user.setPassword(password);
-			user.setConfirm_password(confirm_password);
-			
-			
-			//Call database class and pass user data
-			DatabaseConnection.registerUser(user);
-			//redirect
-			response.sendRedirect("login.jsp");
 			
 		}
 		catch(Exception e) {
@@ -60,16 +104,6 @@ public class RegisterServlet extends HttpServlet {
 		}
 		
 		
-		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }
