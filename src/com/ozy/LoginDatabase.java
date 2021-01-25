@@ -8,9 +8,7 @@ import java.sql.ResultSet;
 import org.apache.tomcat.util.codec.binary.Base64;
 
 public class LoginDatabase {
-	
-	
-	
+		
 	public  boolean validateUser(LoginBean user) throws Exception {
 		
 		boolean status = false;
