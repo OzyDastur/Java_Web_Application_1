@@ -93,7 +93,7 @@ public class RegisterServlet extends HttpServlet {
 				//Call database class and pass user data
 				DatabaseConnection.registerUser(user);
 				//redirect
-				response.sendRedirect("login.jsp");
+				response.sendRedirect("login.jsp?successMessage=Congratulations you've successfully registered! Please log in with your email and password");
 		
 			}
 			

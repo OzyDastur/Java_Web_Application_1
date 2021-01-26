@@ -22,13 +22,28 @@
   <body>
 
   <div class="container-fluid">
+  				<% 
+					String successMessage = request.getParameter("successMessage");
+				
+					if(successMessage == null){
+						out.print("");
+					}
+					else{
+						%><div class="alert alert-success" role="alert"><% 
+						out.print(successMessage);
+						%></div><%
+					}	
+				%>
+  			
     <div id="header">
 		Log In
 		<p>Employee Login Form</p>
 	</div>
+			
     
   <div class="login-wrapper">
-       
+  				
+      
         <form action="LoginServlet" method="POST">
             <h1> Log In</h1>
         <div class="mb-3">
@@ -36,6 +51,18 @@
             <input  type="text" class="form-control" name="email" placeholder="Email" >
             
         </div>
+       		 <% 
+					String invalidEmail = request.getParameter("invalidEmail");
+				
+					if(invalidEmail == null){
+						out.print("");
+					}
+					else{
+						%><div class="alert alert-danger" role="alert"><% 
+						out.print(invalidEmail);
+						%></div><%
+					}	
+			%>
      
         <div class="mb-3">
             
@@ -48,8 +75,38 @@
         <div class="singup-link">
             <span>A new member? Sign up here </span><a href="signup.jsp">Signup</a>
         </div>
+       		 <% 
+					String emptyFields = request.getParameter("emptyFields");
+				
+					if(emptyFields == null){
+						out.print("");
+					} 
+					else{
+						%><div class="alert alert-danger" role="alert"><% 
+						out.print(emptyFields);
+						%></div><%
+					}
+					
+				%>
+				<% 
+					String incorrectEmailOrPassword = request.getParameter("incorrectEmailOrPassword");
+				
+					if(incorrectEmailOrPassword == null){
+						out.print("");
+					} 
+					else{
+						%><div class="alert alert-danger" role="alert"><% 
+						out.print(incorrectEmailOrPassword);
+						%></div><%
+					}
+					
+				%>
+				
+			
         </form>
+         		
     
+    </div>
     </div>
    </body>
    </html>
