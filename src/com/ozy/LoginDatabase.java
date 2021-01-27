@@ -9,14 +9,12 @@ import java.sql.Statement;
 import org.apache.tomcat.util.codec.binary.Base64;
 
 public class LoginDatabase {
-<<<<<<< HEAD
+
 	
 	private String driver = "com.mysql.cj.jdbc.Driver";
 
-	
-=======
 		
->>>>>>> bfc5ecede344265593330dba3ef035f48bf20c65
+
 	public  boolean validateUser(LoginBean user) throws Exception {
 		
 		boolean status = false;

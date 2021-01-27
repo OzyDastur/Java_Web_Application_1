@@ -7,10 +7,22 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
+	//The code in this section prevents going back after logout
+	response.setHeader("Cache-Control","no-cache, no-store, must-revalidate");
+	
+	String email = (String)session.getAttribute("email");
+	
+	if(email == null){
+		response.sendRedirect("login.jsp");
+	}
+	
+%>
+<jsp:include page="header.jsp"/>
 	<h1 style="text-align:center;"> Welcome to employee table</h1>
 	
-	 <div class="row justify-content-center">
-        <form action="CRUDServlet.java" method="POST" >
+	 <div class="left">
+        <form action="CreateOrUpdateServlet.jsp" method="POST" >
         <div class="form-group">
             <div>
                 <h3>CRUD Form </h3>
@@ -28,14 +40,15 @@
         </div>  
         <div class="form-group"> 
            
-            <?php if($edit_state==false):?>
+         
                 <input type="submit" name="save" value="Save" class="btn btn-success">  </button>
                 
-            <?php else: ?>
+          
                 <input type="submit" name="update" value="Update" class="btn btn-primary"></button>
-            <?php endif; ?>
+           
         </div>
         </form>
         </div>
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

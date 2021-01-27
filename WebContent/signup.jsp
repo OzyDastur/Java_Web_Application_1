@@ -40,9 +40,17 @@
 
 			<div class="mb-3">
 
-			<input id="username" type="text" class="form-control" name="username" placeholder="Username">
+			<input id="firstName" type="text" class="form-control" name="firstName" placeholder="First Name">
 
 			</div>
+			
+			<div class="mb-3">
+
+			<input id="lastName" type="text" class="form-control" name="lastName" placeholder="Last Name">
+
+			</div>
+			
+			
 			<div class="mb-3">
 
 				<input id="email" type="text" class="form-control" name="email" placeholder="Email">
