@@ -24,11 +24,11 @@ public class LoginDatabase {
 			
 			//1. Connect to the database
 			
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/employees","root","Sangabo1");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/student","root","Sangabo1");
 
 			
 			//Retrieve email from database
-			String sql = "SELECT * FROM EMPLOYEE WHERE email=?";
+			String sql = "SELECT * FROM student WHERE email=?";
 			
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, user.getEmail());

@@ -4,19 +4,20 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
-public class DatabaseConnection {
-	private static String driver = "com.mysql.cj.jdbc.Driver";
+public class SignupDatabase {
 	
-	public static void registerUser(User user) throws Exception {
+private static String driver = "com.mysql.cj.jdbc.Driver";
+	
+	public static void registerUser(SignupBean user) throws Exception {
 		
 		try {
 			
 			Class.forName(driver);
 			//1. Connect 
 			
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/employees","root","Sangabo1");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/student","root","Sangabo1");
 			//2. SQL query
-			String sql = "INSERT INTO employee (username,email,gender,password, confirm_password) VALUES (?,?,?,?,?)";
+			String sql = "INSERT INTO student (username,email,gender,password, confirm_password) VALUES (?,?,?,?,?)";
 			//3. Prepare statement
 			PreparedStatement ps = con.prepareStatement(sql);
 			//4. Set parameter
@@ -35,5 +36,6 @@ public class DatabaseConnection {
 			throw e;
 		}
 	}
+
 
 }

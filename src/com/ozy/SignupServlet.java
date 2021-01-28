@@ -9,18 +9,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.tomcat.util.codec.binary.Base64;
 
-
 /**
- * Servlet implementation class RegisterServlet
+ * Servlet implementation class SignupServlet
  */
-@WebServlet("/RegisterServlet")
-public class RegisterServlet extends HttpServlet {
+@WebServlet("/SignupServlet")
+public class SignupServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RegisterServlet() {
+    public SignupServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,9 +28,8 @@ public class RegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-	
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -39,7 +37,8 @@ public class RegisterServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		try {
+		
+try {
 			
 			//Recieving request from client/user
 			String username = request.getParameter("username");
@@ -80,7 +79,7 @@ public class RegisterServlet extends HttpServlet {
 				
 		
 				//Create an object of the User class
-				User user = new User ();
+				SignupBean user = new SignupBean ();
 				
 				user.setUsername(username);
 				user.setEmail(email);
@@ -91,7 +90,7 @@ public class RegisterServlet extends HttpServlet {
 			
 				
 				//Call database class and pass user data
-				DatabaseConnection.registerUser(user);
+				SignupDatabase.registerUser(user);
 				//redirect
 				response.sendRedirect("login.jsp?successMessage=Congratulations you've successfully registered! Please log in with your email and password");
 		
@@ -102,7 +101,6 @@ public class RegisterServlet extends HttpServlet {
 		catch(Exception e) {
 			e.printStackTrace();
 		}
-		
 		
 	}
 

@@ -1,6 +1,6 @@
 package com.ozy;
 
-public class CreateUpdateBean {
+public class SignupBean {
 	
 	private String username;
 	private String email;
@@ -40,5 +40,4 @@ public class CreateUpdateBean {
 	public void setConfirm_password(String confirm_password) {
 		this.confirm_password = confirm_password;
 	}
-
 }
