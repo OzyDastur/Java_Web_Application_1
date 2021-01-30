@@ -52,7 +52,7 @@
             <ul class="navbar-nav ms-auto pt-1 pb-1" >
                
                 <li class="nav-item "><a href="#" class="nav-link">Home</a></li>
-                <li class="nav-item "><a href="employeeTable.jsp" class="nav-link ">Employee Table</a></li>
+                <li class="nav-item "><a href="course.jsp" class="nav-link ">Course Table</a></li>
                 <li class="nav-item "><a href="#" class="nav-link ">Future Link</a></li>
                 <li class="nav-item dropdown "><a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-target="#caret" >
                     Search

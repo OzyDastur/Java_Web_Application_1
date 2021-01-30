@@ -1,32 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-
-<!doctype html>
-<html lang="en">
-<head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- Bootstrap CSS -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
-	crossorigin="anonymous">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-	crossorigin="anonymous"></script>
-
-<link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Anton&family=Archivo+Black&family=Righteous&family=Ultra&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles/signup.css">
-<title>Courses</title>
-</head>
-<body>
+<jsp:include page="header.jsp"/>
+<%
+	//The code in this section prevents going back after logout
+	response.setHeader("Cache-Control","no-cache, no-store, must-revalidate");
+	
+	String email = (String)session.getAttribute("email");
+	
+	if(email == null){
+		response.sendRedirect("login.jsp");
+	}
+	
+%>
 	<% 
 		String successMessage = request.getParameter("successMessage");
 	
@@ -39,36 +22,39 @@
 			%></div><%
 		}	
 	%>
+	
+
+
+
+
 <div class="container">
-	<div class="row justify-content-center">
-        <form action="CreateServlet" method="POST" class="form">
-        <div class="form-group">
+	
+        <form action="CourseServlet" method="POST" class="form">
+        
             <div>
                 <h3>Manage Your Courses</h3>
+           </div>
+          <div>
+            <label for="course_id" class="course_id">Course id</label><br>
+            <input class="form-control" type="text" name="course_id" value=""><br>
+        </div> 
                
-            </div>
+         <div>
             
-            <label for="course_name" class="course_name">Name of the couse</label><br>
+            <label for="course_name" class="course_name">Name of the course</label><br>
             <input class="form-control" type="text" name="course_name" value=""><br>
         </div> 
-        <div class="form-group">
-            <label for="department" class="department">Department</label><br>
+         <div>
+            <label for="department" class="department">Department </label><br>
             <input class="form-control" type="text" name="department" value=""><br>
-        </div>  
+        </div> 
         <div class="form-group"> 
-           
-            <?php if($edit_state==false):?>
-                <input type="submit" name="save" value="Save" class="btn btn-success">  </button>
-                
-            <?php else: ?>
-                <input type="submit" name="update" value="Update" class="btn btn-primary"></button>
-            <?php endif; ?>
+                <input type="submit" name="save" value="Add Course" class="btn btn-success"><br>
+                <p><a href="ViewCourseServlet" style="font-size:20px;">View your courses </a></p>
+               
         </div>
         </form>
-        </div>
+       
     </div>
-	
-</body>
-</html>
-</body>
-</html>
+    
+<jsp:include page="footer.jsp"/>

@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class UpdateServlet
+ * Servlet implementation class CourseServlet
  */
-@WebServlet("/UpdateServlet")
-public class UpdateServlet extends HttpServlet {
+@WebServlet("/CourseServlet")
+public class CourseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateServlet() {
+    public CourseServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,24 +35,24 @@ public class UpdateServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
 		try {
 			
+			String course_id = request.getParameter("course_id");
 			String course_name = request.getParameter("course_name");
 			String department = request.getParameter("department");
 			
 			
-			//Create a bean or Model or a Pojo object
-			UpdateBean course = new UpdateBean();
+			CourseBean course = new CourseBean();
 			
-			//Set course name and department
+			course.setCourse_id(course_id);
 			course.setCourse_name(course_name);
 			course.setDepartment(department);
 			
-			//Call course database and pass course object
-			UpdateDatabase.updateCourse(course);
+			CourseDatabase.registerCourse(course);
 			
+			response.sendRedirect("course.jsp?successMessage=Congratulations you've successfully registered for the course!");
 
+			
 			
 		}
 		catch(Exception e) {
