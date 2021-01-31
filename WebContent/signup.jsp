@@ -15,7 +15,7 @@
 
 	<div id="header">
 		Sign Up
-		<p>Employee Signup Form</p>
+		<p>Student Signup Form</p>
 	</div>
 	<div class="signup-wrapper" >
 

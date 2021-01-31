@@ -35,6 +35,7 @@ public class ViewCourseServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
+		
 		try {
 			String driver = "com.mysql.cj.jdbc.Driver";
 			Class.forName(driver);
@@ -68,6 +69,10 @@ public class ViewCourseServlet extends HttpServlet {
 					out.println("<td>"+ department +"</td>");
 					out.println("<td>"+ "<a href='EditCourse?course_id="+ course_id + "'>Edit </a>"+"</td>");
 					out.println("<td>"+ "<a href='DeleteCourse?course_id="+ course_id + "'>Drop </a>"+"</td>");
+					
+				
+					
+					
 					
 				
 				out.println("</tr");

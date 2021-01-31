@@ -18,7 +18,7 @@
         <p> About us | Terms & Conditions | Privacy policy </p>
         <hr>
     
-        <p>Copyright 2021 &copy; Employee. All Rights Reserved.</p>
+        <p>Copyright 2021 &copy; University. All Rights Reserved.</p>
         
        
         

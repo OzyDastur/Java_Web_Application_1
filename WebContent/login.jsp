@@ -37,7 +37,7 @@
   			
     <div id="header">
 		Log In
-		<p>Employee Login Form</p>
+		<p>Student Login Form</p>
 	</div>
 			
     
