@@ -10,7 +10,7 @@ body{
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    width: 1000px;
+    width: 900px;
     border: 1px solid white;
     border-radius: 4.25px;
     font-size:40px;
@@ -52,6 +52,15 @@ body{
 	border: 0.5px solid transparent;
     border-radius: 4.25px;
     background-color:rgb(237, 239, 241);;
+}
+.form-check-label{
+    margin-left:-290px;
+}
+#male{
+    margin-right:-50px;
+}
+#female{
+    margin-right:30px;
 }
 .btn{
     width: 340px;
