@@ -103,8 +103,13 @@
 						value="<c:out value='${user.country}' />" class="form-control"
 						name="country">
 				</fieldset>
-
-				<button type="submit" class="btn btn-success">Save</button>
+				<c:if test="${user != null}">
+				<button type="submit" class="btn btn-primary">Update User</button>
+				</c:if>
+				<c:if test="${user == null}">
+				<button type="submit" class="btn btn-success">Add New User</button>
+				</c:if>
+				
 				</form>
 			</div>
 		</div>
