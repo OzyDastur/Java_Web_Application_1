@@ -16,8 +16,6 @@
 		response.sendRedirect("login.jsp");
 	}
 
-	
-
 %>
 <jsp:include page="header.jsp"/>
 
