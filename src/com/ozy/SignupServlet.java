@@ -51,7 +51,6 @@ try {
 		    
 			
 			
-		
 			if(username.isEmpty() || email.isEmpty() || password.isEmpty() || confirm_password.isEmpty()) {
 				response.sendRedirect("signup.jsp?emptyFields=Please complete all the fields");
 			}
